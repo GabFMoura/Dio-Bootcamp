@@ -74,18 +74,22 @@ Código Condição de pagamento:
 - Acima de duas vezes, preço normal de etiqueta mais juros de 10%; */
 
 const precoEtiqueta = 100;
-const formaPagamento = 2;
+const formaPagamento = 4;
 
-if (formaPagamento === 1 ) {
-  console.log (precoEtiqueta - (precoEtiqueta * 0.1));
-} else if (formaPagamento === 2) {
-  console.log (precoEtiqueta - (precoEtiqueta * 0.15));
-} else if (formaPagamento ===3) {
-  console.log(precoEtiqueta);
-} else {
-  console.log(precoEtiqueta + (precoEtiqueta * 0.1))
+function darDesconto(valor, desconto) {
+    return(valor - (valor * (desconto/100)))
 }
 
-const numero = 10;
-const numeroEmTexto = '10';
-console.log(numero === numeroEmTexto);
+function porJuros(valor, juros) {
+  return (valor + (valor * (juros/100)));
+}
+
+if (formaPagamento === 1 ) {
+  console.log (darDesconto (precoEtiqueta, 10));
+} else if (formaPagamento === 2) {
+  console.log (darDesconto(precoEtiqueta, 15));
+} else if (formaPagamento ===3) {
+  console.log(darDesconto(precoEtiqueta, 0));
+} else{
+  console.log(porJuros(precoEtiqueta, 10))
+}
